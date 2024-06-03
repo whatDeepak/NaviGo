@@ -4,6 +4,7 @@ import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import GridGlobe from "./ui/GridGlobe";
 import { BoxComponent } from "./ui/BoxComponent";
+import { Button } from "./ui/button";
 
 const Hero = () => {
   return (
@@ -43,6 +44,7 @@ const Hero = () => {
         </div>
         <div className="top-[20%] left-[75%] first-line:flex items-center justify-center h-screen">
           <BoxComponent />
+        
         </div>
       </div>
     </div>
