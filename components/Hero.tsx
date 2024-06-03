@@ -44,7 +44,6 @@ const Hero = () => {
         </div>
         <div className="top-[20%] left-[75%] first-line:flex items-center justify-center h-screen">
           <BoxComponent />
-        
         </div>
       </div>
     </div>

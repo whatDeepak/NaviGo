@@ -1,16 +1,16 @@
 "use client";
-
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-
 export function PlaceholderInput({
   placeholders,
+  value: initialValue,
   onChange,
   onSubmit,
 }: {
   placeholders: string[];
+  value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }) {
@@ -30,8 +30,14 @@ export function PlaceholderInput({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const newDataRef = useRef<any[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(initialValue || "");
   const [animating, setAnimating] = useState(false);
+
+  useEffect(() => {
+    if (initialValue !== value) {
+      setValue(initialValue);
+    }
+  }, [initialValue]);
 
   const draw = useCallback(() => {
     if (!inputRef.current) return;
@@ -144,21 +150,29 @@ export function PlaceholderInput({
     setAnimating(true);
     draw();
 
-    const value = inputRef.current?.value || "";
-    if (value && inputRef.current) {
+    const inputValue = inputRef.current?.value || "";
+    if (inputValue && inputRef.current) {
       const maxX = newDataRef.current.reduce(
         (prev, current) => (current.x > prev ? current.x : prev),
         0
       );
       animate(maxX);
+      onChange({
+        target: {
+          value: inputValue,
+        },
+      } as React.ChangeEvent<HTMLInputElement>);
+      onSubmit({
+        preventDefault: () => {},
+      } as React.FormEvent<HTMLFormElement>);
     }
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     vanishAndSubmit();
-    onSubmit && onSubmit(e);
   };
+
   return (
     <form
       className={cn(
@@ -259,3 +273,4 @@ export function PlaceholderInput({
     </form>
   );
 }
+
