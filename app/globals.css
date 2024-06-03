@@ -83,3 +83,33 @@
     @apply font-bold text-4xl md:text-5xl text-center;
   }
 }
+
+/* styles.css */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.chat-drawer {
+  padding: 16px;
+}
+
+.chat-message {
+  margin-bottom: 16px;
+}
+
+.chat-message .query {
+  text-align: right;
+  background-color: #e0f7fa;
+  padding: 8px 12px;
+  border-radius: 16px;
+  display: inline-block;
+}
+
+.chat-message .response {
+  text-align: left;
+  background-color: #f1f1f1;
+  padding: 8px 12px;
+  border-radius: 16px;
+  display: inline-block;
+}
+

@@ -1,11 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HoverBorderGradient } from "./hover-border-gradient";
 import { PlaceholderInput } from "./PlaceholderInput";
-import { FaLocationArrow } from "react-icons/fa6";
+import { ChatDrawer } from "./ChatDrawer";
 
 export function BoxComponent() {
   const [query, setQuery] = useState("");
+  const [chatHistory, setChatHistory] = useState<
+    { query: string; response: string }[]
+  >([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isDrawerOpen]);
 
   const placeholders = [
     "Which airlines have the best accessibility options?",
@@ -20,6 +36,7 @@ export function BoxComponent() {
 
   const handleClick = (text: string) => {
     setQuery(text);
+    setIsDrawerOpen(true); // Open the drawer when a button is clicked
   };
 
   const OnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,7 +77,6 @@ export function BoxComponent() {
               endpointId: "predefined-openai-gpt4o",
               query: query,
               pluginIds: [
-                "plugin-1713962163",
                 "plugin-1717340460",
                 "plugin-1717437831",
                 "plugin-1713924030",
@@ -70,7 +86,11 @@ export function BoxComponent() {
           }
         );
         const queryData = await queryResponse.json();
-        console.log("Query Response:", queryData);
+        const responseText = queryData.chatMessage?.answer || "No response";
+
+        // Update chat history
+        setChatHistory([...chatHistory, { query, response: responseText }]);
+        setIsDrawerOpen(true); // Open the drawer when a query is submitted
       } else {
         console.error("Failed to create chat session");
       }
@@ -119,6 +139,14 @@ export function BoxComponent() {
           />
         </div>
       </div>
+      <ChatDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        chatHistory={chatHistory}
+        query={query}
+        onChange={handleChange}
+        onSubmit={OnSubmit}
+      />
     </div>
   );
 }
