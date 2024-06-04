@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: Cheapest Flights
+  description: Provides the options for the cheapest flights
+  version: 1.0.0
+servers:
+  - url: https://sky-scanner3.p.rapidapi.com/flights
+paths:
+  /cheapest-one-way:
+    get:
+      summary: Get cheapest flights
+      operationId: findCheapestFlights
+      parameters:
+        - name: fromEntityId
+          in: query
+          description: Starting location
+          required: true
+          schema:
+            type: string
+        - name: toEntityId
+          in: query
+          description: Ending location
+          required: true
+          schema:
+            type: string
+        - name: departDate
+          in: query
+          description: Date of flight
+          required: true
+          schema:
+            type: string
+ 
+      responses:
+        '200':
+          description: A successful response.
+        '400':
+          description: Bad request when query parameters are missing or invalid.
+        '401':
+          description: Unauthorized access when API key is missing or invalid.
+        '404':
+          description: No matching flights found.
+        '500':
+          description: Internal server error.

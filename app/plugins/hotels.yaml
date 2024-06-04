@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: Hotels
+  description: Provides the information on hotels in a city.
+  version: 1.0.0
+servers:
+  - url: https://sky-scanner3.p.rapidapi.com/hotels
+paths:
+  /auto-complete:
+    get:
+      summary: Get cheapest flights
+      operationId: findCheapestFlights
+      parameters:
+        - name: query
+          in: query
+          description: city of hotels
+          required: true
+          schema:
+            type: string
+ 
+      responses:
+        '200':
+          description: A successful response.
+        '400':
+          description: Bad request when query parameters are missing or invalid.
+        '401':
+          description: Unauthorized access when API key is missing or invalid.
+        '404':
+          description: No matching flights found.
+        '500':
+          description: Internal server error.

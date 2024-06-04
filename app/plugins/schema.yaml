@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: Easy Weather API
+  description: Provides basic current weather data for specified geographical coordinates.
+  version: 1.0.0
+servers:
+  - url: https://www.refugerestrooms.org/api/v1
+paths:
+  /restrooms:
+    get:
+      summary: Get a list of restrooms.
+      operationId: getAllRestrooms
+      parameters:
+        - in: query
+          name: location
+          description: The location to search for restrooms (e.g., city or coordinates)
+          schema:
+            type: string
+        -   in: query
+            name: ada
+          description: Filter restrooms by accessibility.
+          schema:
+            type: boolean
+        -   in: query
+            name: unisex
+          description: Filter restrooms by being unisex.
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: A successful response containing the current weather conditions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  temperature:
+                    type: number
+                    description: Current temperature at the specified location.
+                  weather_condition:
+                    type: string
+                    description: Descriptive name of the current weather condition (e.g., cloudy, sunny).
+                  humidity:
+                    type: number
+                    description: Current humidity percentage at the location.
+                  wind_speed:
+                    type: number
+                    description: Current wind speed at the location in miles per hour.
+        

@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Public Bathrooms
+  description: Provides weather data services, including current weather conditions and place finding capabilities.
+  version: 1.0.0
+servers:
+  - url: https://public-bathrooms.p.rapidapi.com
+paths:
+  /all:
+    get:
+      summary: Get the list of all the bathrooms
+      operationId: findPlaces
+      parameters:
+        - name: page
+          in: query
+          description: Number of pages
+          required: true
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          description: Number of bathrooms on each page
+          required: true
+          schema:
+            type: number
+        - name: offset
+          in: query
+          description: Max distance offset.
+          required: true
+          schema:
+            type: number
+        - name: ada
+          in: query
+          description: Whether the given results are ADA accessible which is defaulted to false.
+          schema:
+            type: boolean
+        - name: unisex
+          in: query
+          description: Whether bathrooms are unisex.
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: A successful response.
+        '400':
+          description: Bad request when query parameters are missing or invalid.
+        '401':
+          description: Unauthorized access when API key is missing or invalid.
+        '404':
+          description: No matching bathrooms found.
+        '500':
+          description: Internal server error.
