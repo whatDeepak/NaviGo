@@ -109,7 +109,7 @@ export function BoxComponent() {
           className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 w-[450px]"
           onClick={() => handleClick("What's the weather in like Dubai")}
         >
-          <span>What's the weather in like Dubai</span>
+          <span>What&apos;s the weather in like Dubai</span>
         </HoverBorderGradient>
         <HoverBorderGradient
           containerClassName="rounded-lg w-[450px]"
