@@ -123,11 +123,9 @@ export function BoxComponent() {
           containerClassName="rounded-lg w-[450px]"
           as="button"
           className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 w-[450px]"
-          onClick={() =>
-            handleClick("List unisex accessible bathrooms in Chicago")
-          }
+          onClick={() => handleClick("List some public bathrooms in Chicago")}
         >
-          <span>List unisex accessible bathrooms in Chicago</span>
+          <span>List some public bathrooms in Chicago</span>
         </HoverBorderGradient>
       </div>
       <div>
