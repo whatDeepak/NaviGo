@@ -20,7 +20,7 @@ const Footer = () => {
           Ready to <span className="text-purple">travel</span> with us?
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">.</p>
-        <a href="">
+        <a>
           <MagicButton
             title="Let's get in touch"
             icon={<FaLocationArrow />}
