@@ -104,30 +104,30 @@ export function BoxComponent() {
     <div>
       <div className="flex flex-col justify-center text-center space-y-8 mt-20 px-2">
         <HoverBorderGradient
-          containerClassName="rounded-lg w-[400px]"
+          containerClassName="rounded-lg w-[450px]"
           as="button"
-          className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 w-[400px]"
+          className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 w-[450px]"
+          onClick={() => handleClick("What's the weather in like Dubai")}
+        >
+          <span>What's the weather in like Dubai</span>
+        </HoverBorderGradient>
+        <HoverBorderGradient
+          containerClassName="rounded-lg w-[450px]"
+          as="button"
+          className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 w-[450px]"
+          onClick={() => handleClick("Give me list of hotels in New York")}
+        >
+          <span>Give me list of hotels in New York</span>
+        </HoverBorderGradient>
+        <HoverBorderGradient
+          containerClassName="rounded-lg w-[450px]"
+          as="button"
+          className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 w-[450px]"
           onClick={() =>
-            handleClick("Find me a Place to stay for queer people")
+            handleClick("List unisex accessible bathrooms in Chicago")
           }
         >
-          <span>Find me a Place to stay for queer people</span>
-        </HoverBorderGradient>
-        <HoverBorderGradient
-          containerClassName="rounded-lg w-[400px]"
-          as="button"
-          className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 w-[400px]"
-          onClick={() => handleClick("Find gender-neutral restrooms near me")}
-        >
-          <span>Find gender-neutral restrooms near me</span>
-        </HoverBorderGradient>
-        <HoverBorderGradient
-          containerClassName="rounded-lg w-[400px]"
-          as="button"
-          className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 w-[400px]"
-          onClick={() => handleClick("Find me the best flight for New Delhi")}
-        >
-          <span>Find me the best flight for New Delhi</span>
+          <span>List unisex accessible bathrooms in Chicago</span>
         </HoverBorderGradient>
       </div>
       <div>

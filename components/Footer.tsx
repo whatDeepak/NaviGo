@@ -19,10 +19,8 @@ const Footer = () => {
         <h1 className="heading lg:max-w-[45vw]">
           Ready to <span className="text-purple">travel</span> with us?
         </h1>
-        <p className="text-white-200 md:mt-10 my-5 text-center">
-          .
-        </p>
-        <a href="mailto:contact@jsmastery.pro">
+        <p className="text-white-200 md:mt-10 my-5 text-center">.</p>
+        <a href="">
           <MagicButton
             title="Let's get in touch"
             icon={<FaLocationArrow />}
