@@ -81,14 +81,17 @@ export function BoxComponent() {
                 "plugin-1717340460",
                 "plugin-1717437831",
                 "plugin-1713924030",
+                "plugin-1715072649",
               ],
               responseMode: "sync",
             }),
           }
         );
+
         const queryData = await queryResponse.json();
         const responseText = queryData.chatMessage?.answer || "No response";
-
+        console.log(queryData);
+        console.log(responseText);
         // Update chat history
         setChatHistory([...chatHistory, { query, response: responseText }]);
         setIsDrawerOpen(true); // Open the drawer when a query is submitted
