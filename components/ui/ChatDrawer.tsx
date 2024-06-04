@@ -27,7 +27,7 @@ export const ChatDrawer: React.FC<ChatDrawerProps> = ({
       ></div>
       <div className="absolute inset-y-0 right-0 w-[600px] bg-white dark:bg-gray-800 shadow-lg flex flex-col">
         <div className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-lg font-medium text-gray-900 dark:text-white">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-white">
             Chat History
           </h2>
           <button onClick={onClose} className="text-lg">
@@ -38,12 +38,12 @@ export const ChatDrawer: React.FC<ChatDrawerProps> = ({
           {chatHistory.map((chat, index) => (
             <div key={index} className="space-y-4">
               <div className="text-right">
-                <span className="inline-block bg-blue-100 text-blue-800 p-2 rounded-lg">
+                <span className="inline-block font-medium bg-blue-100 text-blue-800 p-2 rounded-lg">
                   {chat.query}
                 </span>
               </div>
               <div className="text-left">
-                <span className="inline-block bg-gray-100 text-gray-800 p-2 rounded-lg">
+                <span className="inline-block font-medium bg-gray-100 text-gray-800 p-2 rounded-lg">
                   {chat.response}
                 </span>
               </div>

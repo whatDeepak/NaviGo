@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Orbitron } from "next/font/google";
+import { Space_Mono } from "next/font/google";
 
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 
-const orbitron = Orbitron({ subsets: ["latin"] });
+const space_Mono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Travel Website",
@@ -21,7 +24,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo.ico" sizes="any" />
       </head>
-      <body className={orbitron.className}>
+      <body className={space_Mono.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
