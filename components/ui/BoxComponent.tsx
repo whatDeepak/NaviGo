@@ -10,6 +10,7 @@ export function BoxComponent() {
     { query: string; response: string }[]
   >([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isFetching, setIsFetching] = useState(false); // Track API call state
 
   useEffect(() => {
     if (isDrawerOpen) {
@@ -41,10 +42,15 @@ export function BoxComponent() {
 
   const OnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (isFetching) return; // Prevent duplicate submissions
+
     const apiKey = "t9oNS5jhZldojcnJKBpxTU7nnpsY1S7g"; // Replace with your actual API key
     const externalUserId = "poikpak"; // Replace with your actual external user ID
 
     try {
+      setIsFetching(true); // Set fetching state to true
+
       // Step 1: Create Chat Session
       const createSessionResponse = await fetch(
         "https://gateway-dev.on-demand.io/chat/v1/sessions",
@@ -62,8 +68,7 @@ export function BoxComponent() {
       );
       const createSessionData = await createSessionResponse.json();
       const sessionId = createSessionData.chatSession.id;
-      console.log(createSessionData);
-      console.log(sessionId);
+
       if (sessionId) {
         // Step 2: Answer Query using the sessionId from Step 1
         const queryResponse = await fetch(
@@ -90,16 +95,20 @@ export function BoxComponent() {
 
         const queryData = await queryResponse.json();
         const responseText = queryData.chatMessage?.answer || "No response";
-        console.log(queryData);
-        console.log(responseText);
+
         // Update chat history
-        setChatHistory([...chatHistory, { query, response: responseText }]);
+        setChatHistory((prevHistory) => [
+          ...prevHistory,
+          { query, response: responseText },
+        ]);
         setIsDrawerOpen(true); // Open the drawer when a query is submitted
       } else {
         console.error("Failed to create chat session");
       }
     } catch (error) {
       console.error("Error in handleSubmit:", error);
+    } finally {
+      setIsFetching(false); // Reset fetching state
     }
   };
 
