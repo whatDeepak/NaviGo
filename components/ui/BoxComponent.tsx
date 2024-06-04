@@ -42,7 +42,7 @@ export function BoxComponent() {
   const OnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const apiKey = "t9oNS5jhZldojcnJKBpxTU7nnpsY1S7g"; // Replace with your actual API key
-    const externalUserId = "NaviGo"; // Replace with your actual external user ID
+    const externalUserId = "poikpak"; // Replace with your actual external user ID
 
     try {
       // Step 1: Create Chat Session
@@ -75,7 +75,7 @@ export function BoxComponent() {
               apikey: apiKey,
             },
             body: JSON.stringify({
-              endpointId: "predefined-openai-gpt4o",
+              endpointId: "predefined-openai-gpt3.5turbo",
               query: query,
               pluginIds: [
                 "plugin-1717340460",
