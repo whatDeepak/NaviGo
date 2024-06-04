@@ -41,7 +41,7 @@ export function BoxComponent() {
 
   const OnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const apiKey = "G9GZKj8DCQEdcyzmSmVK8TjnQZRDvqFj"; // Replace with your actual API key
+    const apiKey = "t9oNS5jhZldojcnJKBpxTU7nnpsY1S7g"; // Replace with your actual API key
     const externalUserId = "NaviGo"; // Replace with your actual external user ID
 
     try {
@@ -62,7 +62,8 @@ export function BoxComponent() {
       );
       const createSessionData = await createSessionResponse.json();
       const sessionId = createSessionData.chatSession.id;
-
+      console.log(createSessionData);
+      console.log(sessionId);
       if (sessionId) {
         // Step 2: Answer Query using the sessionId from Step 1
         const queryResponse = await fetch(
@@ -80,7 +81,6 @@ export function BoxComponent() {
                 "plugin-1717340460",
                 "plugin-1717437831",
                 "plugin-1713924030",
-                "plugin-1715072649",
               ],
               responseMode: "sync",
             }),
