@@ -32,7 +32,7 @@ export async function submitQuery(apiKey, sessionId, query) {
     const body = JSON.stringify({
         endpointId: 'predefined-openai-gpt4o',
         query,
-        pluginIds: ['plugin-1717437831', 'plugin-1717340460'],
+        pluginIds: ['plugin-1717437831', 'plugin-1717340460', 'plugin - 1713924030', 'plugin-1715072649'],
         responseMode: 'sync',
     });
 
